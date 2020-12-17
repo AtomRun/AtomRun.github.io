@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>HashMap的十万个为什么 | Gridea</title>
-<link rel="shortcut icon" href="https://atomrun.github.io/favicon.ico?v=1608195635854">
+<link rel="shortcut icon" href="https://atomrun.github.io/favicon.ico?v=1608195768076">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://atomrun.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="HashMap的十万个为什么 | Gridea - Atom Feed" href="https://atomrun.github.io/atom.xml">
@@ -22,10 +22,11 @@
 
     <meta name="description" content="HashMap
 HashMap是java中以一个键值对形式存储的集合，存储删除速度和查询修改速度都很快
+
 为什么HashMap存取都很快？
 
 原因是因为底层数据结构使用了数组+链表的形式(1.7)
-jdk1.8使用了数组+链表+红黑树。如果比..." />
+jdk1.8使用了数组+链表+红黑树。如果..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -35,7 +36,7 @@ jdk1.8使用了数组+链表+红黑树。如果比..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://atomrun.github.io">
-  <img class="avatar" src="https://atomrun.github.io/images/avatar.png?v=1608195635854" alt="">
+  <img class="avatar" src="https://atomrun.github.io/images/avatar.png?v=1608195768076" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -106,6 +107,7 @@ jdk1.8使用了数组+链表+红黑树。如果比..." />
               <div class="post-content">
                 <h1 id="hashmap">HashMap</h1>
 <p>HashMap是java中以一个键值对形式存储的集合，存储删除速度和查询修改速度都很快</p>
+<!-- more -->
 <h1 id="为什么hashmap存取都很快">为什么HashMap存取都很快？</h1>
 <ol>
 <li>原因是因为底层数据结构使用了数组+链表的形式(1.7)</li>
@@ -115,22 +117,20 @@ jdk1.8使用了数组+链表+红黑树。如果比..." />
 <li>使用数组+链表的话，当链表过长，HashMap读很长的链表需要遍历，时间复杂度退化，这个时候就引申出来红黑树了。</li>
 </ol>
 <h1 id="hashmap怎么计算下标的">HashMap怎么计算下标的？</h1>
-<h2 id="首先我们来看hash方法即如何将key转换为hashcode">首先我们来看hash方法，即如何将key转换为hashcode</h2>
+<p>我们来看hash方法，即如何将key转换为hashcode</p>
 <pre><code class="language-java">static final int hash(Object key) {
     int h;
     return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);
 }
 </code></pre>
-<p>首先判断了key是否为空，不为空就调用了key的hashcode方法赋值给h并且和h右移16位后的h再次进行异或运算即用h的低位异或h的高位</p>
+<p>先判断了key是否为空，不为空就调用了key的hashcode方法赋值给h并且和h右移16位后的h再次进行异或运算即用h的低位异或h的高位</p>
 <figure data-type="image" tabindex="1"><img src="https://pic3.zhimg.com/80/4acf898694b8fb53498542dc0c5f765a_720w.jpg?source=1940ef5c" alt="hashmap" loading="lazy"></figure>
 <p>右位移16位，正好是32bit的一半，自己的高半区和低半区做异或，就是为了混合原始哈希码的高位和低位，以此来加大低位的随机性。而且混合后的低位掺杂了高位的部分特征，这样高位的信息也被变相保留下来。</p>
-<h2 id="hashmap计算下标的时候是在putval的时候">HashMap计算下标的时候是在putVal的时候</h2>
+<p>HashMap计算下标的时候是在putVal的时候</p>
 <pre><code class="language-java">if ((p = tab[i = (n - 1) &amp; hash]) == null)
     tab[i] = newNode(hash, key, value, null);
 </code></pre>
-<pre><code class="language-java">i = (n-1) &amp; hash
-</code></pre>
-<p>i就是下标，下标的计算方式为数组长度&amp;hash值。</p>
+<p>其中的<code>i = (n-1) &amp; hash</code>i就是下标，下标的计算方式为数组长度&amp;hash值。</p>
 <h1 id="为什么每次是2的整数次幂进行扩容">为什么每次是2的整数次幂进行扩容？</h1>
 <p>首先每次扩容都是当前容量的两倍，例如16-&gt;32-&gt;64</p>
 <p>比如：</p>
@@ -240,12 +240,7 @@ jdk1.8使用了数组+链表+红黑树。如果比..." />
                 <ul class="markdownIt-TOC">
 <li><a href="#hashmap">HashMap</a></li>
 <li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88hashmap%E5%AD%98%E5%8F%96%E9%83%BD%E5%BE%88%E5%BF%AB">为什么HashMap存取都很快？</a></li>
-<li><a href="#hashmap%E6%80%8E%E4%B9%88%E8%AE%A1%E7%AE%97%E4%B8%8B%E6%A0%87%E7%9A%84">HashMap怎么计算下标的？</a>
-<ul>
-<li><a href="#%E9%A6%96%E5%85%88%E6%88%91%E4%BB%AC%E6%9D%A5%E7%9C%8Bhash%E6%96%B9%E6%B3%95%E5%8D%B3%E5%A6%82%E4%BD%95%E5%B0%86key%E8%BD%AC%E6%8D%A2%E4%B8%BAhashcode">首先我们来看hash方法，即如何将key转换为hashcode</a></li>
-<li><a href="#hashmap%E8%AE%A1%E7%AE%97%E4%B8%8B%E6%A0%87%E7%9A%84%E6%97%B6%E5%80%99%E6%98%AF%E5%9C%A8putval%E7%9A%84%E6%97%B6%E5%80%99">HashMap计算下标的时候是在putVal的时候</a></li>
-</ul>
-</li>
+<li><a href="#hashmap%E6%80%8E%E4%B9%88%E8%AE%A1%E7%AE%97%E4%B8%8B%E6%A0%87%E7%9A%84">HashMap怎么计算下标的？</a></li>
 <li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%AF%8F%E6%AC%A1%E6%98%AF2%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E5%B9%82%E8%BF%9B%E8%A1%8C%E6%89%A9%E5%AE%B9">为什么每次是2的整数次幂进行扩容？</a></li>
 <li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81length-1">为什么需要length-1？</a>
 <ul>

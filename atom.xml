@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://atomrun.github.io</id>
     <title>Gridea</title>
-    <updated>2020-12-17T09:00:38.991Z</updated>
+    <updated>2020-12-17T09:02:50.378Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://atomrun.github.io"/>
     <link rel="self" href="https://atomrun.github.io/atom.xml"/>
@@ -16,8 +16,12 @@
         <link href="https://atomrun.github.io/post/hashmap-de-shi-wan-ge-wei-shi-me/">
         </link>
         <updated>2020-12-17T08:59:08.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="hashmap">HashMap</h1>
+<p>HashMap是java中以一个键值对形式存储的集合，存储删除速度和查询修改速度都很快</p>
+]]></summary>
         <content type="html"><![CDATA[<h1 id="hashmap">HashMap</h1>
 <p>HashMap是java中以一个键值对形式存储的集合，存储删除速度和查询修改速度都很快</p>
+<!-- more -->
 <h1 id="为什么hashmap存取都很快">为什么HashMap存取都很快？</h1>
 <ol>
 <li>原因是因为底层数据结构使用了数组+链表的形式(1.7)</li>
@@ -27,22 +31,20 @@
 <li>使用数组+链表的话，当链表过长，HashMap读很长的链表需要遍历，时间复杂度退化，这个时候就引申出来红黑树了。</li>
 </ol>
 <h1 id="hashmap怎么计算下标的">HashMap怎么计算下标的？</h1>
-<h2 id="首先我们来看hash方法即如何将key转换为hashcode">首先我们来看hash方法，即如何将key转换为hashcode</h2>
+<p>我们来看hash方法，即如何将key转换为hashcode</p>
 <pre><code class="language-java">static final int hash(Object key) {
     int h;
     return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);
 }
 </code></pre>
-<p>首先判断了key是否为空，不为空就调用了key的hashcode方法赋值给h并且和h右移16位后的h再次进行异或运算即用h的低位异或h的高位</p>
+<p>先判断了key是否为空，不为空就调用了key的hashcode方法赋值给h并且和h右移16位后的h再次进行异或运算即用h的低位异或h的高位</p>
 <figure data-type="image" tabindex="1"><img src="https://pic3.zhimg.com/80/4acf898694b8fb53498542dc0c5f765a_720w.jpg?source=1940ef5c" alt="hashmap" loading="lazy"></figure>
 <p>右位移16位，正好是32bit的一半，自己的高半区和低半区做异或，就是为了混合原始哈希码的高位和低位，以此来加大低位的随机性。而且混合后的低位掺杂了高位的部分特征，这样高位的信息也被变相保留下来。</p>
-<h2 id="hashmap计算下标的时候是在putval的时候">HashMap计算下标的时候是在putVal的时候</h2>
+<p>HashMap计算下标的时候是在putVal的时候</p>
 <pre><code class="language-java">if ((p = tab[i = (n - 1) &amp; hash]) == null)
     tab[i] = newNode(hash, key, value, null);
 </code></pre>
-<pre><code class="language-java">i = (n-1) &amp; hash
-</code></pre>
-<p>i就是下标，下标的计算方式为数组长度&amp;hash值。</p>
+<p>其中的<code>i = (n-1) &amp; hash</code>i就是下标，下标的计算方式为数组长度&amp;hash值。</p>
 <h1 id="为什么每次是2的整数次幂进行扩容">为什么每次是2的整数次幂进行扩容？</h1>
 <p>首先每次扩容都是当前容量的两倍，例如16-&gt;32-&gt;64</p>
 <p>比如：</p>
