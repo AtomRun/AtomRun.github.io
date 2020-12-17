@@ -1,22 +1,110 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://atomrun.github.io</id>
-    <title>Gridea</title>
-    <updated>2020-12-17T09:00:38.991Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://atomrun.github.io"/>
-    <link rel="self" href="https://atomrun.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
-    <logo>https://atomrun.github.io/images/avatar.png</logo>
-    <icon>https://atomrun.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Gridea</rights>
-    <entry>
-        <title type="html"><![CDATA[HashMap的十万个为什么]]></title>
-        <id>https://atomrun.github.io/post/hashmap-de-shi-wan-ge-wei-shi-me/</id>
-        <link href="https://atomrun.github.io/post/hashmap-de-shi-wan-ge-wei-shi-me/">
-        </link>
-        <updated>2020-12-17T08:59:08.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="hashmap">HashMap</h1>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HashMap的十万个为什么 | Gridea</title>
+<link rel="shortcut icon" href="https://atomrun.github.io/favicon.ico?v=1608195635854">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://atomrun.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="HashMap的十万个为什么 | Gridea - Atom Feed" href="https://atomrun.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-185691172-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-185691172-1');
+</script>
+
+
+    <meta name="description" content="HashMap
+HashMap是java中以一个键值对形式存储的集合，存储删除速度和查询修改速度都很快
+为什么HashMap存取都很快？
+
+原因是因为底层数据结构使用了数组+链表的形式(1.7)
+jdk1.8使用了数组+链表+红黑树。如果比..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://atomrun.github.io">
+  <img class="avatar" src="https://atomrun.github.io/images/avatar.png?v=1608195635854" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              HashMap的十万个为什么
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-12-17
+              </span>
+              <span>
+                12 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://atomrun.github.io/post-images/hashmap-de-shi-wan-ge-wei-shi-me.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="hashmap">HashMap</h1>
 <p>HashMap是java中以一个键值对形式存储的集合，存储删除速度和查询修改速度都很快</p>
 <h1 id="为什么hashmap存取都很快">为什么HashMap存取都很快？</h1>
 <ol>
@@ -146,6 +234,100 @@
 <h1 id="hashmap什么时候扩容">HashMap什么时候扩容？</h1>
 <p>2倍扩容</p>
 <p>[16位的数组]  -&gt; [32位的数组] 可能里面的元素位置会变化，数组长度变化之后我们需要rehash即将之前的16位的hash值，重新与32-1重新计算下标存放。</p>
-]]></content>
-    </entry>
-</feed>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#hashmap">HashMap</a></li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88hashmap%E5%AD%98%E5%8F%96%E9%83%BD%E5%BE%88%E5%BF%AB">为什么HashMap存取都很快？</a></li>
+<li><a href="#hashmap%E6%80%8E%E4%B9%88%E8%AE%A1%E7%AE%97%E4%B8%8B%E6%A0%87%E7%9A%84">HashMap怎么计算下标的？</a>
+<ul>
+<li><a href="#%E9%A6%96%E5%85%88%E6%88%91%E4%BB%AC%E6%9D%A5%E7%9C%8Bhash%E6%96%B9%E6%B3%95%E5%8D%B3%E5%A6%82%E4%BD%95%E5%B0%86key%E8%BD%AC%E6%8D%A2%E4%B8%BAhashcode">首先我们来看hash方法，即如何将key转换为hashcode</a></li>
+<li><a href="#hashmap%E8%AE%A1%E7%AE%97%E4%B8%8B%E6%A0%87%E7%9A%84%E6%97%B6%E5%80%99%E6%98%AF%E5%9C%A8putval%E7%9A%84%E6%97%B6%E5%80%99">HashMap计算下标的时候是在putVal的时候</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%AF%8F%E6%AC%A1%E6%98%AF2%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E5%B9%82%E8%BF%9B%E8%A1%8C%E6%89%A9%E5%AE%B9">为什么每次是2的整数次幂进行扩容？</a></li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81length-1">为什么需要length-1？</a>
+<ul>
+<li><a href="#1-%E4%BF%9D%E8%AF%81%E5%85%83%E7%B4%A0%E5%B0%BD%E5%8F%AF%E8%83%BD%E7%9A%84%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83">1. 保证元素尽可能的均匀分布</a></li>
+<li><a href="#2-%E4%BF%9D%E8%AF%81%E4%B8%8D%E4%BC%9A%E5%8F%91%E7%94%9F%E6%95%B0%E7%BB%84%E8%B6%8A%E7%95%8C">2. 保证不会发生数组越界</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88hashmap%E9%BB%98%E8%AE%A4%E5%A4%A7%E5%B0%8F%E4%B8%BA16">为什么HashMap默认大小为16</a></li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E5%86%99hashcode%E5%BF%85%E9%A1%BB%E8%A6%81%E9%87%8D%E5%86%99equals">为什么重写HashCode必须要重写equals</a></li>
+<li><a href="#hashmap%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E6%89%A9%E5%AE%B9%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B4%9F%E8%BD%BD%E5%9B%A0%E5%AD%90%E6%98%AF075">HashMap什么时候扩容？为什么负载因子是0.75？</a></li>
+<li><a href="#hashmap%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%B8%BA%E7%BA%A2%E9%BB%91%E6%A0%91">HashMap什么时候链表转换为红黑树</a></li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%93%BE%E8%A1%A8%E9%95%BF%E5%BA%A6%E4%B8%BA8%E4%B8%94%E6%95%B0%E7%BB%84%E9%95%BF%E5%BA%A664%E5%86%8D%E8%BD%AC%E6%8D%A2%E4%B8%BA%E7%BA%A2%E9%BB%91%E6%A0%91">为什么链表长度为8且数组长度64再转换为红黑树？</a></li>
+<li><a href="#hashmap%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E9%95%BF%E5%BA%A6">HashMap数组的最大长度</a></li>
+<li><a href="#jdk18%E4%B8%AD%E5%AF%B9hash%E7%AE%97%E6%B3%95%E5%92%8C%E5%AF%BB%E5%9D%80%E7%AE%97%E6%B3%95%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%E7%9A%84">JDK1.8中对hash算法和寻址算法如何优化的？</a><br>
+*
+<ul>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%8F%96%E6%A8%A1%E8%80%8C%E6%98%AF%E8%BF%9B%E8%A1%8C%E4%B8%8E%E8%BF%90%E7%AE%97%E5%91%A2">为什么不取模，而是进行与运算呢？</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%B2%A1%E6%9C%89%E4%BC%98%E5%8C%96%E8%BF%87%E7%9A%84hash%E4%B8%8E%E6%95%B0%E7%BB%84%E9%95%BF%E5%BA%A6">使用没有优化过的hash与数组长度</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3hashmap%E7%9A%84%E7%A2%B0%E6%92%9E%E9%97%AE%E9%A2%98">如何解决HashMap的碰撞问题</a></li>
+</ul>
+</li>
+<li><a href="#hashmap%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E6%89%A9%E5%AE%B9">HashMap什么时候扩容？</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://atomrun.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
