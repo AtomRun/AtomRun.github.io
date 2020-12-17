@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    关于 | cLeeX
+    Synchronized简述 | cLeeX
 </title>
 <link rel="shortcut icon" href="https://atomrun.github.io/favicon.ico?v=1608197718053">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -111,28 +111,52 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            关于
+                            Synchronized简述
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2019-01-25</time>
+                            <time class="post-time">2020-12-17</time>
                             
                         </div>
                         
+                            <div class="post-feature-image" style="background-image: url('https://atomrun.github.io/post-images/synchronized-jian-shu.jpg')"></div>
+                            
                                 <div class="post-content">
-                                    <blockquote>
-<p>Wlecome！Have a nice day🤝</p>
-</blockquote>
-<h2 id="about-blog">🏠 About Blog</h2>
-<p>a simple blog for java programer</p>
-<h2 id="who-am-i">👨‍💻 Who am I</h2>
-<p>a monkey</p>
-<h2 id="hobbies">⛹ hobbies</h2>
-<p>play game and reading something</p>
+                                    <h1 id="synchronized的底层原理">Synchronized的底层原理</h1>
+<!-- more -->
+<p>Synchronized的原理是和jvm指令和monitor有关系的。假设在代码中使用了Synchronized关键字，那么在底层编译后的jvm指令中会出现monitorenter和monitorexit两个指令</p>
+<pre><code class="language-java">monitorenter
+//代码对应的指令
+monitorexit
+</code></pre>
+<p>因为每个对象都会对应一个monitor对象，一个类对象也对应一个monitor，如果要对这个对象加锁，那么必须获取这个对象关联monitor的lock锁。</p>
+<p>在monitor中有一个计数器，默认为0，每当有一个线程想要获取对象的锁，会去看monitor是否是0，如果是0就说明没有枷锁，那么将0改为1，表明该线程获取了该对象的锁。</p>
+<p>例如又来了一个线程想要获取该对象的锁，这个时候新的线程就会发现对象的monitor对象计数器为1。所以线程1加锁成功，线程2加锁失败，进入阻塞等待的状态。</p>
+<p>为什么说synchronized是可重入的？</p>
+<pre><code class="language-java">public class Widget {
+    public synchronized void doSomething() {
+        System.out.println(&quot;方法1执行...&quot;);
+        doOthers();
+    }
+    public synchronized void doOthers() {
+        System.out.println(&quot;方法2执行...&quot;);
+    }
+}
+</code></pre>
+<p>可重入加锁的意思就是：当一个线程拿到一个对象锁，执行了一段代码之后，释放了该锁。类似上面这种情况，在doSomething中拿到了该对象的锁，那么进入内层的方法doOthers的时候，还可以继续使用之前的锁执行，区别就是将monitor的计数器+1。也叫递归锁，以此类推。当该线程从里面的方法释放的时候就会减去计数器的值直至减到0。</p>
 
                                 </div>
                     </article>
                     <!--  -->
                     
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://atomrun.github.io/post/hashmap-de-shi-wan-ge-wei-shi-me/">
+                                <h3 class="post-title">
+                                    HashMap的十万个为什么
+                                </h3>
+                            </a>
+                        </div>
+                        
                             <div id="disqus_thread"></div>
                             <div id="gitalk-container"></div>
                 </div>
@@ -147,13 +171,7 @@
         <div class="toc-title i-card-title">目录</div>
         <div class="toc-content">
             <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#about-blog">🏠 About Blog</a></li>
-<li><a href="#who-am-i">👨‍💻 Who am I</a></li>
-<li><a href="#hobbies">⛹ hobbies</a></li>
-</ul>
-</li>
+<li><a href="#synchronized%E7%9A%84%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86">Synchronized的底层原理</a></li>
 </ul>
 
         </div>
