@@ -7,7 +7,7 @@
 <title>
     leetcode.389.找不同 | cLeeX
 </title>
-<link rel="shortcut icon" href="https://atomrun.github.io/favicon.ico?v=1608277478736">
+<link rel="shortcut icon" href="https://atomrun.github.io/favicon.ico?v=1608277633034">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -40,7 +40,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://atomrun.github.io">
-                <img class="avatar" src="https://atomrun.github.io/images/avatar.png?v=1608277478736" alt="">
+                <img class="avatar" src="https://atomrun.github.io/images/avatar.png?v=1608277633034" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -117,7 +117,7 @@
                             <time class="post-time">2020-12-18</time>
                             
                                 <a href="https://atomrun.github.io/tag/nrBMHx0ef/" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-">
                             #leetcode
                         </a>
                                 
@@ -126,7 +126,9 @@
                             <div class="post-feature-image" style="background-image: url('https://atomrun.github.io/post-images/leetcode389zhao-bu-tong.jpg')"></div>
                             
                                 <div class="post-content">
-                                    <p>根据题意可以知道该题目范围在s和t的范围在<code>a-z</code>，并且新数组比老数组多了一个字符，所以可以将这道题目的解法将s和t转换为数组，然后遍历s将每个字母转为ASCII放到res中。然后再遍历t将其中的字符转为ASCII直接相减，这样剩下的res就是要找到的数据。</p>
+                                    <p>该题有很多解法，异或或者Hash的方式。</p>
+<!-- more -->
+<p>根据题意可以知道该题目范围在s和t的范围在<code>a-z</code>，并且新数组比老数组多了一个字符，所以可以将这道题目的解法将s和t转换为数组，然后遍历s将每个字母转为ASCII放到res中。然后再遍历t将其中的字符转为ASCII直接相减，这样剩下的res就是要找到的数据。</p>
 <pre><code class="language-java">class Solution {
     public char findTheDifference(String s, String t) {         
         int res = 0;
@@ -161,7 +163,7 @@
                                 <!-- id-card -->
                                 
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://atomrun.github.io/images/avatar.png?v=1608277478736)">
+        <div class="id_card-avatar" style="background-image: url(https://atomrun.github.io/images/avatar.png?v=1608277633034)">
         </div>
         <h1 class="id_card-title">
             cLeeX
