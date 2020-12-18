@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://atomrun.github.io</id>
     <title>cLeeX</title>
-    <updated>2020-12-18T03:30:06.530Z</updated>
+    <updated>2020-12-18T03:33:29.132Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://atomrun.github.io"/>
     <link rel="self" href="https://atomrun.github.io/atom.xml"/>
@@ -120,7 +120,7 @@ public URLClassLoader(URL[] urls,ClassLoader parent)://指定要加载的类所�
 <!-- more -->
 <p>Synchronized的原理是和jvm指令和monitor有关系的。假设在代码中使用了Synchronized关键字，那么在底层编译后的jvm指令中会出现monitorenter和monitorexit两个指令</p>
 <pre><code class="language-java">monitorenter
-//代码对应的指令
+//对应的代码
 monitorexit
 </code></pre>
 <p>因为每个对象都会对应一个monitor对象，一个类对象也对应一个monitor，如果要对这个对象加锁，那么必须获取这个对象关联monitor的lock锁。</p>
