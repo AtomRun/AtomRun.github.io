@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    关于 | cLeeX
+    类加载器 | cLeeX
 </title>
 <link rel="shortcut icon" href="https://atomrun.github.io/favicon.ico?v=1608262139388">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -31,7 +31,6 @@
         gtag('config', 'UA-185691172-1');
     </script>
     
-        
 </head>
 
 <body>
@@ -106,90 +105,87 @@
     });
 </script>
 
-            <div id="main-content" class="post-detail main-container">
-                <!-- left -->
+            <div id="main-content" class="post-container main-container">
                 <div id="content" class="main-container-left">
-                    <article class="post i-card">
-                        <h2 class="post-title">
-                            关于
-                        </h2>
-                        <div class="post-info">
-                            <time class="post-time">2019-01-25</time>
-                            
-                        </div>
-                        
-                                <div class="post-content">
-                                    <blockquote>
-<p>Wlecome！Have a nice day🤝</p>
-</blockquote>
-<h2 id="about-blog">🏠 About Blog</h2>
-<p>a simple blog for java programer</p>
-<h2 id="who-am-i">👨‍💻 Who am I</h2>
-<p>a monkey</p>
-<h2 id="hobbies">⛹ hobbies</h2>
-<p>play game and reading something</p>
-
-                                </div>
-                    </article>
-                    <!--  -->
                     
-                            <div id="disqus_thread"></div>
-                            <div id="gitalk-container"></div>
-                </div>
-                <!-- middle -->
-                <div class="main-container-middle"></div>
-                <!-- right -->
-                <div id="sidebar" class="main-container-right">
-                    
-                        <!-- toc -->
-                        
-    <div class="toc-card i-card ">
-        <div class="toc-title i-card-title">目录</div>
-        <div class="toc-content">
-            <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#about-blog">🏠 About Blog</a></li>
-<li><a href="#who-am-i">👨‍💻 Who am I</a></li>
-<li><a href="#hobbies">⛹ hobbies</a></li>
-</ul>
-</li>
-</ul>
-
-        </div>
-        <script>
-            function locateCatelogList() {
-                /*获取文章目录集合,可通过:header过滤器*/
-                var alis = $('.post-content :header');
-                /*获取侧边栏目录列表集合**/
-                var sidebar_alis = $('.markdownIt-TOC a');
-                /*获取滚动条到顶部的距离*/
-                var scroll_height = $(window).scrollTop();
-                for (var i = 0; i < alis.length; i++) {
-                    /*获取锚点集合中的元素分别到顶点的距离*/
-                    var a_height = $(alis[i]).offset().top;
-                    if (a_height < scroll_height) {
-                        /*高亮显示*/
-                        sidebar_alis.removeClass('on');
-                        $(sidebar_alis[i]).addClass('on');
-                    }
-                }
-            }
-            $(function() {
-                /*绑定滚动事件 */
-                $(window).bind('scroll', locateCatelogList);
-            });
-        </script>
+    <div class="i-card">
+        <b>标签：#
+        类加载器</b>
     </div>
     
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://atomrun.github.io/post/lei-jia-zai-qi-zong-shu/">
+                        类加载器综述
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-12-18</time>
+                    
+                        <a href="https://atomrun.github.io/tag/mPoNhpWIl/" class="post-tag i-tag
+                            i-tag-primary">
+            #类加载器
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                        <a href="https://atomrun.github.io/post/lei-jia-zai-qi-zong-shu/" class="post-feature-image" style="background-image:url(https://atomrun.github.io/post-images/lei-jia-zai-qi-zong-shu.jpg) ">
+                        </a>
+                        
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <h1 id="类加载执行流程">类加载执行流程</h1>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://atomrun.github.io/post/lei-jia-zai-qi-zong-shu/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://atomrun.github.io/images/avatar.png?v=1608262139388)">
+        </div>
+        <h1 class="id_card-title">
+            cLeeX
+        </h1>
+        <h2 class="id_card-description">
+            成为独当一面的后端程序员
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
                             
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
 
                 </div>
-
-
-
-
             </div>
+
 
 
             <div class="site-footer">
@@ -201,7 +197,6 @@
   hljs.initHighlightingOnLoad()
 </script>
 
-
     </div>
     <script>
         $('#sidebar').stickySidebar({
@@ -209,7 +204,6 @@
             // bottomSpacing: 60
         });
     </script>
-    
 </body>
 
 </html>

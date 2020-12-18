@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://atomrun.github.io</id>
     <title>cLeeX</title>
-    <updated>2020-12-17T09:36:06.886Z</updated>
+    <updated>2020-12-18T03:29:03.199Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://atomrun.github.io"/>
     <link rel="self" href="https://atomrun.github.io/atom.xml"/>
@@ -10,6 +10,104 @@
     <logo>https://atomrun.github.io/images/avatar.png</logo>
     <icon>https://atomrun.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, cLeeX</rights>
+    <entry>
+        <title type="html"><![CDATA[类加载器综述]]></title>
+        <id>https://atomrun.github.io/post/lei-jia-zai-qi-zong-shu/</id>
+        <link href="https://atomrun.github.io/post/lei-jia-zai-qi-zong-shu/">
+        </link>
+        <updated>2020-12-18T03:27:48.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="类加载执行流程">类加载执行流程</h1>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="类加载执行流程">类加载执行流程</h1>
+<!-- more -->
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2020/12/15/zjFPqdeBZgx1VMQ.png" alt="" loading="lazy"></figure>
+<ol>
+<li>类的加载时通过类的全路径名包+类名，查找到类的字节码文件，将字节码文件转换为二进制数据读入到内存中存放到元空间中。利用字节码文件创建一个Class对象存放在堆区中。这个过程就是类加载器来完成的。</li>
+<li>验证阶段，确定字节码文件的正确性。准备阶段，为了类的静态变量开辟内存并初始化值只针对static变量，例如一个static int a = 5，准备阶段只是将a设置为0，而初始化阶段才会设置为5，而final的变量，在编译的时候就分配好了内存。解析阶段将类中的符号引用转换为实际引用。</li>
+<li>初始化阶段，类加载器将会先加载父类的字节码并且先初始化，执行静态变量赋值和静态代码块，成员变量也会被初始化。</li>
+<li>准备阶段为类的静态变量分配内存，并将静态变量初始化为默认值，这个阶段只为静态变量分配内存并设置默认值。</li>
+<li>初始化阶段将静态变量设置为5，以static int = 5举例。</li>
+<li>而final static修饰的变量，编译的时候就分配好了，也不会分配实例变量的内存。</li>
+<li>解析阶段是将符号引用转换为直接引用。符号即使用符号描述的，直接引用是直接指向目标的指针相对偏移量或者定位目标类的地址。</li>
+<li>初始化，若该类有父加载器，先加载父类，执行静态变量赋值和静态代码块。成员变量也会被初始化</li>
+</ol>
+<h1 id="类加载器">类加载器</h1>
+<h2 id="虚拟机内置加载器">虚拟机内置加载器</h2>
+<h3 id="根类加载器bootstrap">根类加载器(BootStrap)</h3>
+<p>是虚拟机的最底层类加载器，使用C++实现，没有父加载器，也没有继承ClassLoader类，主要职责就是加载系统属性“sun.boot.classpath”这个路径下的核心类库。即&lt;JAVA_HOME&gt;\JRE\LIB。出于安全考虑，这个类只会加载java、javax、sun开头的类。</p>
+<pre><code class="language-java">//核心类库rt.jar，我们去这里取出一个类
+ClassLoader classLoader = Object.class.getClassLoader();
+System.out.println(&quot;object类的加载器是&quot;+classLoader);//结果是null
+</code></pre>
+<h3 id="扩展类加载器exstension">扩展类加载器(Exstension)</h3>
+<p>主要加载&lt;JAVA_HOME&gt;\JRE\LIB\ext目录下的类库或者系统变量&quot;java.ext.dirs&quot;</p>
+<pre><code class="language-java">//ExtensionClassLoader
+ClassLoader service = DNSNameService.class.getClassLoader();
+System.out.println(&quot;DNSNameService类的加载器是&quot;+service);
+//DNSNameService类的加载器是sun.misc.Launcher$ExtClassLoader@a09ee92
+</code></pre>
+<h3 id="系统类加载器">系统类加载器</h3>
+<p>称之为应用类加载器，他的父类是扩展类加载器，不是指继承关系。它负责从classpath环境变量或者系统属性java.classpath所指定的目录中加载类。它是用户自定义的类加载器的默认父加载器。一般情况下，该类加载器是程序中默认的类加载器，可以通过ClassLoader.getSystemClassLoader()直接获得。</p>
+<pre><code class="language-java">// APPClassLoader
+ClassLoader loader = ClassLoaderDemo1.class.getClassLoader();
+System.out.println(&quot;本类的加载器是&quot;+loader);
+//本类的加载器是sun.misc.Launcher$AppClassLoader@18b4aac2
+</code></pre>
+<p>我们自己写的类都是由这个AppClassLoader加载的</p>
+<h2 id="总结">总结</h2>
+<p>类的加载都是由上述三种类加载器相互配合执行的，同时我们还可以自定义类加载器，需要注意的是，Java虚拟机对于Class文件采用的是按需加载的方式，也就是说，需要使用该类的时候才会加载它的Class文件到内存生成Class对象。并且加载Class文件的时候，Java虚拟机使用的是双亲委派机制。即把类加载的请求交给父加载器处理。是一种任务委派模式。</p>
+<h1 id="双亲委派机制">双亲委派机制</h1>
+<p>除了根类加载器之外，其他的类加载器都需要有自己的父加载器，从JDK1.2开始，类的加载使用双亲委派机制，这种机制能够很好的保护java程序的安全。除了虚拟机自带的根类加载器之外，其余的类加载器都有唯一的父加载器。</p>
+<p>比如，如果需要classLoader加载一个类的时候，该ClassLoader先委托自己的父加载器加载这个类，如果父加载器能够加载，则由父加载器加载，否则才由ClassLoader自己加载这个类。即每个加载器都很懒，加载时都让父加载器去尝试加载。一直到根类加载器。注意：双亲委派机制的父子关系并非面向对象的继承关系。而是通过组合模式来复用父加载器代码。如下图。</p>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2020/12/15/re5Tn8oRMExVg4H.png" alt="" loading="lazy"></figure>
+<h2 id="双亲委派的好处">双亲委派的好处：</h2>
+<ol>
+<li>避免类重复加载，当父加载器加载了之后，子类就没有必要再加载一次。</li>
+<li>考虑到安全因素，Java核心API中定义类型不会被随意替换。假设通过网络传递一个名为java.lang.Object的类，通过双亲委派机制传递到启动类加载器。而启动类加载器在核心API发现这个名字的类，发现这个类已经被加载了，不会重新加载网络传递的java.lang.Object，而是直接返回加载过的Object.class。这样可以防止核心API被随意篡改。</li>
+</ol>
+<h2 id="classloader">ClassLoader</h2>
+<p>所有的类加载器(除了根加载器)都要继承java.lang.ClassLoader。它是一个抽象类，主要的方法如下</p>
+<h3 id="loadclass">loadClass</h3>
+<p>这个方法是双亲委派模型的代码实现。需要注意的是，只有父类加载器加载不到类的时候，会调用findClass进行类的查找，所以，在定义自己的类加载器，不要覆盖该方法，而应该覆盖findClass方法。</p>
+<p>模板方法设计模式： 父类里有loadClass方法，不管哪个子类，它们loadClass过程是一样的，自己干的代码不一样。 所以覆盖的不是loadClass而是findClass方法。得到Class文件中二进制数据，用defineClass()把Class文件转换成字节码。 通俗的讲就是张老师说的爸爸的问题，类加载器都有自己的父类。loadClass方法是先找他的爸爸，如果爸爸干不了，就找findClass方法自己完成加载。 findClass方法是直接自己完成加载，得到Class文件的二进制数据，再用defineClass把Class文件转换成字节码，不找他的父类加载器</p>
+<p>因为我们不覆盖loadClass，那么自定义加载器加载类的时候调用的就是父类的loadClass，父类加载不了那么就会调用findClass，子类有find Class，所以会使用子类的findClass，所以我们要实现自己的findClass</p>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2020/12/15/vD2A4BoYpmUqNCd.png" alt="" loading="lazy"></figure>
+<h3 id="findclass">findClass</h3>
+<h3 id="defineclass">defineClass</h3>
+<p>将byte字节解析为虚拟机能够识别的Class对象，defineClass方法通常和findClass一起使用。在自定义类加载器时，会直接覆盖ClassLoader的findClass方法获取要加载类的字节码，然后调用defineClass方法生成Class对象。</p>
+<h3 id="resolveclass">resolveClass</h3>
+<p>连接指定的类</p>
+<h2 id="urlclassloader">URLClassLoader</h2>
+<p>在java.net包中，JDK提供了一个更加易用的类加载器URLClassLoader，扩展了ClassLoader，能够从本地或者网络上指定的位置加载类。我们使用该类作为自定义的类加载器使用。</p>
+<pre><code class="language-java">public URLClassLoader(URL[] urls)://指定要加载的类所在的URL地址，父类加载器默认为系统类加载器
+
+public URLClassLoader(URL[] urls,ClassLoader parent)://指定要加载的类所在的URL地址，并且指定父类加载器
+</code></pre>
+<pre><code class="language-java">public class Demo{
+    //将该类打包
+    public Demo(){
+        System.out.println(&quot;Hello&quot;);
+    }
+}
+</code></pre>
+<pre><code class="language-java">public Class ClassLoaderDemo2{
+    public static void main(String args){
+        File file = new File(&quot;d:/&quot;);
+        URI uri = file.toURI();
+        URL url = uri.toURL();
+        //构建classLoader
+        URLClassLoader classloader = new URLClassLoader(new URL[url]);
+        classLoader.getParent.sout;//默认是系统类加载器
+        //加载 
+        Clazz clzz = classLoader.loadClass(&quot;com.xxx.Demo&quot;);
+        clzz.newInstance();
+    }
+}
+</code></pre>
+<h2 id="自定义类加载器">自定义类加载器</h2>
+<p>如果要自定义类加载器，要继承ClassLoader并且覆盖findClass</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Synchronized简述]]></title>
         <id>https://atomrun.github.io/post/synchronized-jian-shu/</id>
