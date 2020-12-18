@@ -7,7 +7,7 @@
 <title>
     cLeeX
 </title>
-<link rel="shortcut icon" href="https://atomrun.github.io/favicon.ico?v=1608262404842">
+<link rel="shortcut icon" href="https://atomrun.github.io/favicon.ico?v=1608277478736">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -39,7 +39,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://atomrun.github.io">
-                <img class="avatar" src="https://atomrun.github.io/images/avatar.png?v=1608262404842" alt="">
+                <img class="avatar" src="https://atomrun.github.io/images/avatar.png?v=1608277478736" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -111,6 +111,47 @@
         
             <article class="post i-card">
                 <h2 class="post-title">
+                    <a href="https://atomrun.github.io/post/leetcode389zhao-bu-tong/">
+                        leetcode.389.找不同
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-12-18</time>
+                    
+                        <a href="https://atomrun.github.io/tag/nrBMHx0ef/" class="post-tag i-tag
+                            i-tag-banana">
+            #leetcode
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                        <a href="https://atomrun.github.io/post/leetcode389zhao-bu-tong/" class="post-feature-image" style="background-image:url(https://atomrun.github.io/post-images/leetcode389zhao-bu-tong.jpg) ">
+                        </a>
+                        
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            根据题意可以知道该题目范围在s和t的范围在a-z，并且新数组比老数组多了一个字符，所以可以将这道题目的解法将s和t转换为数组，然后遍历s将每个字母转为ASCII放到res中。然后再遍历t将其中的字符转为ASCII直接相减，这样剩下的res就是要找到的数据。
+class Solution {
+    public char findTheDifference(String s, String t) {         
+        int res = 0;
+        for (int c : t.toCharArray()) res += c;
+        for (int c : s.toCharArray()) res -= c;
+        return (char) res;
+    }
+}
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://atomrun.github.io/post/leetcode389zhao-bu-tong/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
                     <a href="https://atomrun.github.io/post/lei-jia-zai-qi-zong-shu/">
                         类加载器综述
                     </a>
@@ -119,7 +160,7 @@
                     <time class="post-time">2020-12-18</time>
                     
                         <a href="https://atomrun.github.io/tag/mPoNhpWIl/" class="post-tag i-tag
-                            i-tag-banana">
+                            i-tag-">
             #类加载器
         </a>
                         
@@ -151,7 +192,7 @@
                     <time class="post-time">2020-12-17</time>
                     
                         <a href="https://atomrun.github.io/tag/6zX1U-sTa/" class="post-tag i-tag
-                            i-tag-warning">
+                            i-tag-other_1">
             #synchronized
         </a>
                         
@@ -217,7 +258,7 @@
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://atomrun.github.io/images/avatar.png?v=1608262404842)">
+        <div class="id_card-avatar" style="background-image: url(https://atomrun.github.io/images/avatar.png?v=1608277478736)">
         </div>
         <h1 class="id_card-title">
             cLeeX

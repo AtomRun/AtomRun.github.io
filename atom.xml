@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://atomrun.github.io</id>
     <title>cLeeX</title>
-    <updated>2020-12-18T03:33:29.132Z</updated>
+    <updated>2020-12-18T07:44:40.732Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://atomrun.github.io"/>
     <link rel="self" href="https://atomrun.github.io/atom.xml"/>
@@ -10,6 +10,24 @@
     <logo>https://atomrun.github.io/images/avatar.png</logo>
     <icon>https://atomrun.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, cLeeX</rights>
+    <entry>
+        <title type="html"><![CDATA[leetcode.389.找不同]]></title>
+        <id>https://atomrun.github.io/post/leetcode389zhao-bu-tong/</id>
+        <link href="https://atomrun.github.io/post/leetcode389zhao-bu-tong/">
+        </link>
+        <updated>2020-12-18T07:22:40.000Z</updated>
+        <content type="html"><![CDATA[<p>根据题意可以知道该题目范围在s和t的范围在<code>a-z</code>，并且新数组比老数组多了一个字符，所以可以将这道题目的解法将s和t转换为数组，然后遍历s将每个字母转为ASCII放到res中。然后再遍历t将其中的字符转为ASCII直接相减，这样剩下的res就是要找到的数据。</p>
+<pre><code class="language-java">class Solution {
+    public char findTheDifference(String s, String t) {         
+        int res = 0;
+        for (int c : t.toCharArray()) res += c;
+        for (int c : s.toCharArray()) res -= c;
+        return (char) res;
+    }
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[类加载器综述]]></title>
         <id>https://atomrun.github.io/post/lei-jia-zai-qi-zong-shu/</id>
