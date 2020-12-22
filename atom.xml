@@ -1,19 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://atomrun.github.io</id>
+    <id>http://localhost:4000</id>
     <title>cLeeX</title>
-    <updated>2020-12-18T07:47:15.738Z</updated>
+    <updated>2020-12-22T13:00:49.778Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://atomrun.github.io"/>
-    <link rel="self" href="https://atomrun.github.io/atom.xml"/>
+    <link rel="alternate" href="http://localhost:4000"/>
+    <link rel="self" href="http://localhost:4000/atom.xml"/>
     <subtitle>成为独当一面的后端程序员</subtitle>
-    <logo>https://atomrun.github.io/images/avatar.png</logo>
-    <icon>https://atomrun.github.io/favicon.ico</icon>
+    <logo>http://localhost:4000/images/avatar.png</logo>
+    <icon>http://localhost:4000/favicon.ico</icon>
     <rights>All rights reserved 2020, cLeeX</rights>
     <entry>
+        <title type="html"><![CDATA[归并排序模板]]></title>
+        <id>http://localhost:4000/post/gui-bing-pai-xu-mo-ban/</id>
+        <link href="http://localhost:4000/post/gui-bing-pai-xu-mo-ban/">
+        </link>
+        <updated>2020-12-22T12:58:52.000Z</updated>
+        <content type="html"><![CDATA[<pre><code class="language-java">        if (l &gt;= r) {
+            return;
+        }
+        int mid = l + r &gt;&gt; 1;
+        merge_sort(q, l, mid);
+        merge_sort(q, mid + 1, r);
+
+        int k = 0, i = l, j = mid + 1;
+        while (i &lt;= mid &amp;&amp; j &lt;= r) {
+            if (q[i] &lt;= q[j]) {
+                temp[k++] = q[i++];
+            } else {
+                temp[k++] = q[j++];
+            }
+        }
+        while (i &lt;= mid) {
+            temp[k++] = q[i++];
+        }
+        while (j &lt;= r) {
+            temp[k++] = q[i++];
+        }
+        for (i = l, j = 0; i &lt;= r; i++, j++) {
+            q[i] = temp[j];
+        }
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[快速排序模板]]></title>
+        <id>http://localhost:4000/post/kuai-su-pai-xu-mo-ban/</id>
+        <link href="http://localhost:4000/post/kuai-su-pai-xu-mo-ban/">
+        </link>
+        <updated>2020-12-22T12:58:00.000Z</updated>
+        <content type="html"><![CDATA[<pre><code class="language-java">        if (l &gt;= r) {
+            return;
+        }
+        int i = l - 1, j = r + 1, x = q[l + r &gt;&gt; 1];
+        while (i &lt; j) {
+            do {
+                i++;
+            } while (q[i] &lt; x);
+            do {
+                j--;
+            } while (q[j] &gt; x);
+            if (i&lt;j){
+                int temp = q[i];
+                q[i] = q[j];
+                q[j] = temp;
+            }
+        }
+        quickSort(q,l,j);
+        quickSort(q,j+1,r);
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[leetcode.389.找不同]]></title>
-        <id>https://atomrun.github.io/post/leetcode389zhao-bu-tong/</id>
-        <link href="https://atomrun.github.io/post/leetcode389zhao-bu-tong/">
+        <id>http://localhost:4000/post/leetcode389zhao-bu-tong/</id>
+        <link href="http://localhost:4000/post/leetcode389zhao-bu-tong/">
         </link>
         <updated>2020-12-18T07:22:40.000Z</updated>
         <summary type="html"><![CDATA[<p>该题有很多解法，异或或者Hash的方式。</p>
@@ -34,8 +95,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[类加载器综述]]></title>
-        <id>https://atomrun.github.io/post/lei-jia-zai-qi-zong-shu/</id>
-        <link href="https://atomrun.github.io/post/lei-jia-zai-qi-zong-shu/">
+        <id>http://localhost:4000/post/lei-jia-zai-qi-zong-shu/</id>
+        <link href="http://localhost:4000/post/lei-jia-zai-qi-zong-shu/">
         </link>
         <updated>2020-12-18T03:27:48.000Z</updated>
         <summary type="html"><![CDATA[<h1 id="类加载执行流程">类加载执行流程</h1>
@@ -132,8 +193,8 @@ public URLClassLoader(URL[] urls,ClassLoader parent)://指定要加载的类所�
     </entry>
     <entry>
         <title type="html"><![CDATA[Synchronized简述]]></title>
-        <id>https://atomrun.github.io/post/synchronized-jian-shu/</id>
-        <link href="https://atomrun.github.io/post/synchronized-jian-shu/">
+        <id>http://localhost:4000/post/synchronized-jian-shu/</id>
+        <link href="http://localhost:4000/post/synchronized-jian-shu/">
         </link>
         <updated>2020-12-17T09:33:32.000Z</updated>
         <summary type="html"><![CDATA[<h1 id="synchronized的底层原理">Synchronized的底层原理</h1>
@@ -164,8 +225,8 @@ monitorexit
     </entry>
     <entry>
         <title type="html"><![CDATA[HashMap的十万个为什么]]></title>
-        <id>https://atomrun.github.io/post/hashmap-de-shi-wan-ge-wei-shi-me/</id>
-        <link href="https://atomrun.github.io/post/hashmap-de-shi-wan-ge-wei-shi-me/">
+        <id>http://localhost:4000/post/hashmap-de-shi-wan-ge-wei-shi-me/</id>
+        <link href="http://localhost:4000/post/hashmap-de-shi-wan-ge-wei-shi-me/">
         </link>
         <updated>2020-12-17T08:59:08.000Z</updated>
         <summary type="html"><![CDATA[<h1 id="hashmap">HashMap</h1>
